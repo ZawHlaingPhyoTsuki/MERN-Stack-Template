@@ -1,5 +1,6 @@
 import React from "react";
 import CartRow from "./CartRow";
+import useStore from "../../stores/useStore";
 
 const CartHeader = () => {
   return (
@@ -13,13 +14,14 @@ const CartHeader = () => {
 };
 
 const CartList = () => {
+  const { cart } = useStore();
   return (
     <>
       <CartHeader />
       <div className="mt-8">
-        <CartRow />
-        <CartRow />
-        <CartRow />
+        {cart.map((product) => (
+          <CartRow key={product.id} product={product} />
+        ))}
       </div>
     </>
   );

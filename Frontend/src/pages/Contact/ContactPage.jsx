@@ -2,7 +2,6 @@ import React from "react";
 import Breadcrumb1 from "../../components/Header/Breadcrumb1";
 import { FaPhone } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
-import NaviBtn from "../../components/NaviBtn";
 
 const ContactPage = () => {
   return (

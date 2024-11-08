@@ -41,16 +41,16 @@ const Footer = () => {
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-3 justify-between mt-4 text-xl">
             <Link to={"https://www.facebook.com/ZawHlaingPhyo.23"}>
-              <FaFacebookF />
+              <FaFacebookF className="hover:text-[#d2d2d2] text-white"/>
             </Link>
             <Link to={"https://x.com/ZawHlaingPhyo"}>
-              <FaTwitter />
+              <FaTwitter className="hover:text-[#d2d2d2] text-white"/>
             </Link>
             <Link to={"https://www.instagram.com/tsukuyomi1123/"}>
-              <FaInstagram />
+              <FaInstagram className="hover:text-[#d2d2d2] text-white"/>
             </Link>
             <Link to={"https://github.com/ZawHlaingPhyoTsuki"}>
-              <FaGithub />
+              <FaGithub className="hover:text-[#d2d2d2] text-white"/>
             </Link>
           </div>
         </div>

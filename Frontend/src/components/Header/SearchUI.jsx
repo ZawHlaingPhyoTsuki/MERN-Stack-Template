@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import React from "react";
+import useStore from "../../stores/useStore";
 
 const SearchUI = () => {
-  const { setShowMenu, showMenu } = useContext(StoreContext);
+  const { setShowMenu, showMenu } = useStore();
 
   const toggleDropdown = () => {
     setShowMenu(!showMenu);

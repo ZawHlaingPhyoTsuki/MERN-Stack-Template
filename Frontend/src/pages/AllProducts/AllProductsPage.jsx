@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumb from "../../components/Body/Breadcrumb";
 import ProductLists from "../../components/Product/ProductLists";
 import FilterSidebar from "../../components/Product/FilterSidebar";
 import Filterbar from "../../components/Product/Filterbar";
+import { useLocation } from "react-router-dom";
+import useStore from "../../stores/useStore";
 
 const AllProductsPage = () => {
+  const { setCategory } = useStore();
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const category = searchParams.get("category");
+
+    setCategory(category);
+  }, [location.search, setCategory]);
+
   return (
     <div className="">
       <Breadcrumb />

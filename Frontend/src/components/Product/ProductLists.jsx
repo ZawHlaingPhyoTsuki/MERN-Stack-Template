@@ -1,18 +1,26 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import { useContext } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import SkeProductCard from "./SkeProductCard";
+import useStore from "../../stores/useStore";
 
 const ProductLists = () => {
-  const { products } = useContext(StoreContext);
+
+  const { filteredProducts, loading } = useStore();
 
   return (
-    <div className="bg-red-200 md:col-span-3 lg:col-span-4">
+    <div className="md:col-span-3 lg:col-span-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-2">
-        {products && products.length > 0 ? (products.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))) : (<p>No Products</p>)}
-        
+        {loading ? (
+          Array.from({ length: 8 }).map((_, index) => (
+            <SkeProductCard key={index} />
+          ))
+        ) : filteredProducts && filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <p>No Products</p>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,9 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Badge from "./Badge";
+import useStore from "../../stores/useStore";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,11 +22,10 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  const navigate = useNavigate();
+  const { wishlist, cart } = useStore();
 
   // Close the menu if clicking outside the dropdown or on the logo
   useEffect(() => {
-    // console.log(dropdownRef.current);
     const handleClickOutside = (event) => {
       if (
         dropdownRef.current &&
@@ -45,7 +46,11 @@ const Navbar = () => {
     <nav className=" bg-[#323232] text-[#d9d9d9]">
       <div className="relative flex items-center justify-between py-4 w-[80%] mx-auto z-10">
         {/* Logo */}
-        <Link to="/" className="font-[Dalfitra] tracking-widest text-3xl font-bold" onClick={closeMenu}>
+        <Link
+          to="/"
+          className="font-[Dalfitra] tracking-widest text-3xl font-bold"
+          onClick={closeMenu}
+        >
           Tsukuyomi
         </Link>
 
@@ -68,11 +73,13 @@ const Navbar = () => {
         {/* Icons (Search, Heart, Cart) */}
         <div className="flex items-center space-x-4">
           <FaSearch className="cursor-pointer hover:text-gray-400 text-xl" />
-          <Link to={"/wishlist"}>
+          <Link to={"/wishlist"} className="relative">
             <FaHeart className="cursor-pointer hover:text-gray-400 text-xl" />
+            {wishlist.length > 0 && <Badge count={wishlist.length} />}
           </Link>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} className="relative">
             <FaShoppingCart className="cursor-pointer hover:text-gray-400 text-xl" />
+            {cart.length > 0 && <Badge count={cart.length} />}
           </Link>
 
           {/* Menu Icon for smaller screens */}
@@ -105,7 +112,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="/about"
+              to="/about-us"
               className="block py-2 hover:bg-gray-700"
               onClick={closeMenu}
             >
