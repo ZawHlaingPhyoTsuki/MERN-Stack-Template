@@ -2,8 +2,8 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className='bg-red-100 w-full h-[400px] my-10'>
-      Hero
+    <div className=' w-full my-10'>
+      <img src="../../../public/Frame 560.png" alt="" className='w-full rounded-lg' />
     </div>
   )
 }

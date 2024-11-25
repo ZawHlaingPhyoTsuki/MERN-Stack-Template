@@ -93,6 +93,8 @@ const useStore = create((set, get) => ({
         [productId]: 1,
       },
     })),
+
+ 
 }));
 
 export default useStore;
